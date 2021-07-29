@@ -1,4 +1,4 @@
-import { Button, Heading, Flex } from '@chakra-ui/react';
+import { Button, Flex, Heading } from "@chakra-ui/react";
 
 export function Error(): JSX.Element {
   return (
@@ -9,7 +9,12 @@ export function Error(): JSX.Element {
       flexDir="column"
     >
       <Heading>Infelizmente ocorreu um erro =(</Heading>
-      <Button py={6} onClick={() => window.location.reload()} mt={4}>
+      <Button
+        py={6}
+        onClick={() => window.location.reload()}
+        mt={4}
+        colorScheme="red"
+      >
         Clique aqui para tentar novamente
       </Button>
     </Flex>

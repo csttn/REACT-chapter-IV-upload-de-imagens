@@ -1,4 +1,4 @@
-import { Box, Heading, Flex, Progress } from '@chakra-ui/react';
+import { Box, Flex, Heading, Progress } from "@chakra-ui/react";
 
 export function Loading(): JSX.Element {
   return (
@@ -15,7 +15,7 @@ export function Loading(): JSX.Element {
           size="xs"
           isIndeterminate
           bgColor="transparent"
-          colorScheme="orange"
+          colorScheme="red"
         />
       </Box>
     </Flex>

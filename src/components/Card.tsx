@@ -1,23 +1,24 @@
 import {
   Box,
   Heading,
-  Text,
   Image,
   Skeleton,
   SkeletonText,
-} from '@chakra-ui/react';
-import { useState } from 'react';
+  Text,
+} from "@chakra-ui/react";
+import { useState } from "react";
 
-interface Card {
+export interface Card {
   title: string;
   description: string;
   url: string;
   ts: number;
+  id?: string;
 }
 
 interface CardProps {
   data: Card;
-  viewImage: (url: string) => void;
+  viewImage?: (url: string) => void;
 }
 
 export function Card({ data, viewImage }: CardProps): JSX.Element {
