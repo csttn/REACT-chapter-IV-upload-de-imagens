@@ -27,7 +27,6 @@ export default async function handler(
 ): Promise<void> {
   if (req.method === "POST") {
     const { url, title, description } = req.body;
-    console.log("cheguei na req");
 
     return client
       .query(
@@ -51,6 +50,8 @@ export default async function handler(
 
   if (req.method === "GET") {
     const { after } = req.query;
+
+    console.log(after);
 
     const queryOptions = {
       size: 6,

@@ -1,7 +1,8 @@
 import { Box, Button } from "@chakra-ui/react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { InfiniteData, useInfiniteQuery } from "react-query";
-import { Card } from "../components/Card";
+import { ICard } from "../components/Card";
+import { CardList } from "../components/CardList";
 import { Error } from "../components/Error";
 import { Header } from "../components/Header";
 import { Loading } from "../components/Loading";
@@ -19,16 +20,24 @@ export default function Home(): JSX.Element {
     hasNextPage,
   } = useInfiniteQuery(
     "images",
-    async (pageParam = null) => {
+    async ({ pageParam = null }) => {
+      console.log(pageParam);
       const response = await api.get(`/images`);
       return response.data;
-    }, // TODO AXIOS REQUEST WITH PARAM
+    },
     {
-      getNextPageParam: (data) => (data.after ? data.after : null),
+      getNextPageParam: (data) => {
+        return data.after ? data.after : null;
+      },
     }
   );
 
-  function formattedImagesData(data: InfiniteData<any>) {
+  useEffect(() => {
+    isFetchingNextPage ? setloadingImages(true) : setloadingImages(false);
+    console.log("Carregando imagens");
+  }, [isFetchingNextPage]);
+
+  function formattedImagesData(data: InfiniteData<any>): ICard[] {
     if (data) {
       const imagesFormatted = data.pages.map((content) => {
         const imagesData = content.data.map((image) => ({
@@ -57,7 +66,7 @@ export default function Home(): JSX.Element {
     if (isLoading) return <Loading />;
 
     if (formattedData) {
-      return formattedData.map((card) => <Card key={card.id} data={card} />);
+      return <CardList cards={formattedData} />;
     }
   };
 
@@ -68,7 +77,11 @@ export default function Home(): JSX.Element {
         {renderContent()}
         {/* TODO RENDER LOAD MORE BUTTON IF DATA HAS NEXT PAGE */}
 
-        <Button colorScheme="red">Carregar mais...</Button>
+        <Button colorScheme="red" onClick={() => fetchNextPage()}>
+          Carregar mais...
+        </Button>
+
+        {loadingImages && <Loading />}
       </Box>
     </>
   );

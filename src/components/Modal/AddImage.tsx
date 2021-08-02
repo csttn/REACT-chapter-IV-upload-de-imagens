@@ -1,13 +1,12 @@
 import {
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
   ModalBody,
   ModalCloseButton,
-} from '@chakra-ui/react';
-
-import { FormAddImage } from '../Form/FormAddImage';
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+} from "@chakra-ui/react";
+import { FormAddImage } from "../Form/FormAddImage";
 
 interface ModalAddImageProps {
   isOpen: boolean;
@@ -23,7 +22,13 @@ export function ModalAddImage({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={handleCloseModal} isCentered size="4xl">
+    <Modal
+      motionPreset="slideInBottom"
+      isOpen={isOpen}
+      onClose={handleCloseModal}
+      isCentered
+      size="4xl"
+    >
       <ModalOverlay />
       <ModalContent bgColor="pGray.900">
         <ModalHeader fontSize="4xl">Nova imagem</ModalHeader>
