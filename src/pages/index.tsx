@@ -21,7 +21,6 @@ export default function Home(): JSX.Element {
   } = useInfiniteQuery(
     "images",
     async ({ pageParam = null }) => {
-      console.log(pageParam);
       const response = await api.get(`/images`);
       return response.data;
     },
@@ -34,7 +33,7 @@ export default function Home(): JSX.Element {
 
   useEffect(() => {
     isFetchingNextPage ? setloadingImages(true) : setloadingImages(false);
-    console.log("Carregando imagens");
+    console.log("Carregando novas imagens");
   }, [isFetchingNextPage]);
 
   function formattedImagesData(data: InfiniteData<any>): ICard[] {

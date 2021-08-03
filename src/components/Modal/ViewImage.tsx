@@ -34,13 +34,12 @@ export function ModalViewImage({
     >
       <ModalOverlay />
 
-      <ModalContent pb={2}>
+      <ModalContent>
         <Image src={imgUrl} />
+        <Link href={imgUrl} color="darkgray">
+          Abrir original
+        </Link>
       </ModalContent>
-
-      <Link href={imgUrl} colorScheme="gray">
-        Abrir original
-      </Link>
     </Modal>
   );
 }

@@ -1,5 +1,3 @@
-import { forwardRef, ForwardRefRenderFunction } from 'react';
-import { FieldError } from 'react-hook-form';
 import {
   FormControl,
   FormErrorMessage,
@@ -7,8 +5,10 @@ import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
   Tooltip,
-} from '@chakra-ui/react';
-import { FiAlertCircle } from 'react-icons/fi';
+} from "@chakra-ui/react";
+import { forwardRef, ForwardRefRenderFunction } from "react";
+import { FieldError } from "react-hook-form";
+import { FiAlertCircle } from "react-icons/fi";
 
 interface InputProps extends ChakraInputProps {
   name: string;
@@ -34,10 +34,10 @@ const TextInputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         bgColor="pGray.800"
         color="pGray.50"
         _placeholder={{
-          color: 'pGray.200',
+          color: "pGray.200",
         }}
         _hover={{
-          borderColor: 'orange.400',
+          borderColor: "orange.400",
         }}
         py={6}
         pr={8}
