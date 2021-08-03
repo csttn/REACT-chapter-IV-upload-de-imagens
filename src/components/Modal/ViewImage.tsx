@@ -1,4 +1,5 @@
 import {
+  Box,
   Image,
   Link,
   Modal,
@@ -36,9 +37,12 @@ export function ModalViewImage({
 
       <ModalContent>
         <Image src={imgUrl} />
-        <Link href={imgUrl} color="darkgray">
-          Abrir original
-        </Link>
+
+        <Box padding="1">
+          <Link href={imgUrl} color="black" textDecorationLine="none">
+            Abrir original
+          </Link>
+        </Box>
       </ModalContent>
     </Modal>
   );
