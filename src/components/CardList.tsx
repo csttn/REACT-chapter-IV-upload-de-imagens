@@ -19,9 +19,9 @@ export function CardList({ cards }: CardsProps): JSX.Element {
 
   return (
     <>
-      <Grid templateColumns="repeat(3, 1fr)">
+      <Grid templateColumns="repeat(3, 1fr)" gap={6}>
         {cards.map((card) => (
-          <GridItem key={card.id} marginX="2" marginY="2">
+          <GridItem key={card.id}>
             <Card data={card} viewImage={viewImage} />
           </GridItem>
         ))}

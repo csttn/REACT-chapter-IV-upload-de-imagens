@@ -36,7 +36,7 @@ export function ModalViewImage({
       <ModalOverlay />
 
       <ModalContent>
-        <Image src={imgUrl} />
+        <Image src={imgUrl} maxW={["600px", "900px"]} maxH="600px" />
 
         <Box padding="1">
           <Link href={imgUrl} color="black" textDecorationLine="none">

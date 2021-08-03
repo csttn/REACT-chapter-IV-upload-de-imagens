@@ -22,6 +22,7 @@ export default function Home(): JSX.Element {
     "images",
     async ({ pageParam = null }) => {
       const response = await api.get(`/images`);
+      console.log(response.data);
       return response.data;
     },
     {
