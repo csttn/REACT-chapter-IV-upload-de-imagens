@@ -19,7 +19,7 @@ export function CardList({ cards }: CardsProps): JSX.Element {
 
   return (
     <>
-      <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+      <Grid templateColumns="repeat(3, 1fr)" gap={6} marginBottom={10}>
         {cards.map((card) => (
           <GridItem key={card.id}>
             <Card data={card} viewImage={viewImage} />
