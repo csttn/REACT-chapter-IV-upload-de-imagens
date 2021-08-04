@@ -56,7 +56,7 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
 
   const onSubmit: SubmitHandler<createImageFormData> = async (
     data
-  ): Promise<void> => {
+  ) => {
     const { description, title } = data;
     const imageDTO: createImageFormData = {
       description,
@@ -66,10 +66,13 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
 
     try {
       if (!imageUrl) {
-        toast({
+        return toast({
           title: "Imagem não adicionada",
           description:
             "É preciso adicionar e aguardar o upload de uma imagem antes de realizar o cadastro.",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
         });
       }
       // TODO SHOW ERROR TOAST IF IMAGE URL DOES NOT EXISTS
@@ -80,6 +83,9 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
       toast({
         title: "Imagem cadastrada",
         description: "Sua imagem foi cadastrada com sucesso.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
       });
     } catch {
       // TODO SHOW ERROR TOAST IF SUBMIT FAILED
@@ -87,6 +93,9 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
       toast({
         title: "Falha no cadastro",
         description: "Ocorreu um erro ao tentar cadastrar a sua imagem.",
+         status: "error",
+          duration: 9000,
+          isClosable: true,
       });
     } finally {
       // TODO CLEAN FORM, STATES AND CLOSE MODAL
